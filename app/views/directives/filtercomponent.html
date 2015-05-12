@@ -1,0 +1,36 @@
+<tabset>
+  <tab heading="Filter">
+    <div ng-init="init()" style="border: solid 1px #F3F5F7; padding: 10px;" >
+      <div class="row" >
+        <div class="col-md-12">
+          <div ng-repeat="dropdown in model.dropdowns">
+            <div class="col-md-3" >
+              <label class="control-label">{{dropdown.title}}</label>
+              <select
+                ng-model="model.selected[dropdown.title]"
+                ng-change="updateSelect(dropdown.title)"
+                class="form-control input-sm"
+                ng-options="option.value as option.label for option in dropdown.options">
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label class="control-label">Date Range</label>
+            <div class="form-group">
+              <input date-range-picker
+                     class="form-control date-picker"
+                     type="text"
+                     ng-change="updateSelect('startDate');updateSelect('endDate')"
+                     ng-model="model.date"/>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 pull-right">
+          <button type="button" class="btn btn-success" ng-click="submitFilter()">Submit</button>
+        </div>
+      </div>
+    </div>
+  </tab>
+</tabset>
