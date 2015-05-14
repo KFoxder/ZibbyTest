@@ -4,7 +4,7 @@
       <div class="row" >
         <div class="col-md-12">
           <div ng-repeat="dropdown in model.dropdowns">
-            <div class="col-md-3" >
+            <div class="col-md-3" ng-if="dropdown.type==='dropdown'">
               <label class="control-label">{{dropdown.title}}</label>
               <select
                 ng-model="model.selected[dropdown.title]"
@@ -13,15 +13,15 @@
                 ng-options="option.value as option.label for option in dropdown.options">
               </select>
             </div>
-          </div>
-          <div class="col-md-6">
-            <label class="control-label">Date Range</label>
-            <div class="form-group">
-              <input date-range-picker
-                     class="form-control date-picker"
-                     type="text"
-                     ng-change="updateSelect('startDate');updateSelect('endDate')"
-                     ng-model="model.date"/>
+            <div class="col-md-6" ng-if="dropdown.type==='dateRange'">
+              <label class="control-label">Date Range</label>
+              <div class="form-group">
+                <input date-range-picker
+                       class="form-control date-picker"
+                       type="text"
+                       ng-change="updateSelect('startDate');updateSelect('endDate')"
+                       ng-model="model.date"/>
+              </div>
             </div>
           </div>
         </div>

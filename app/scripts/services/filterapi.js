@@ -23,6 +23,16 @@ angular.module('zibbyFilterApp')
     };
 
     filterAPI.sendFilter = function(filterToSend){
+      if(filterToSend !== undefined){
+        if(filterToSend['startDate']){
+          filterToSend['Start Date'] = filterToSend['startDate'];
+          delete filterToSend['startDate'];
+        }
+        if(filterToSend['endDate']){
+          filterToSend['End Date'] = filterToSend['endDate'];
+          delete filterToSend['endDate'];
+        }
+      }
       return   $http({
         url: filterBaseURL,
         method: 'POST',

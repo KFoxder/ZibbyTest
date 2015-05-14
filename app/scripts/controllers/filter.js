@@ -21,7 +21,7 @@ angular.module('zibbyFilterApp')
     $scope.init = function(){
       /* init model*/
       $scope.model = {};
-      /* Object to be returend to API with filters selected by User*/
+      /* Object to be returned to API with filters selected by User*/
       $scope.model.selected = {};
       /* Set dropdowns */
       filterAPI.getDropdowns()
@@ -80,7 +80,7 @@ angular.module('zibbyFilterApp')
         var value = cookieService.getDefault(key);
         if(value){
           $scope.model.selected[key] = value;
-        }else{
+        }else if(dropdown[i].type !== undefined && dropdown[i].type==='dropdown'){
           $scope.model.selected[key] = dropdown[i].options[0].value;
         }
       }

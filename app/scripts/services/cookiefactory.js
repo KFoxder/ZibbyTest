@@ -15,14 +15,16 @@ angular.module('zibbyFilterApp')
     cookieAPI.getDefault = function(key){
       var cookieValue = null;
       if(key !== undefined && key !== null) {
-        cookieValue = $cookies[key];
+        cookieValue = localStorage[key];
+        //cookieValue = $cookies[key];
       }
       return cookieValue;
     };
 
     cookieAPI.setDefault = function(key,value){
       if(value !== undefined && value !== null && key !== undefined && key !== null) {
-        $cookies[key] = value;
+        localStorage[key] = value;
+        //$cookies[key] = value;
       }
     };
 
